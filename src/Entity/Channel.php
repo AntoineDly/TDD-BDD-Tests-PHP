@@ -9,8 +9,9 @@ class Channel
     private string $name;
     private array $messages;
 
-    public function __construct()
+    public function __construct(string $name)
     {
+        $this->setName($name);
         $this->messages = [];
     }
 
@@ -40,6 +41,9 @@ class Channel
 
     public function setName(string $name): Channel
     {
+        if ($name === '') {
+            throw new Exception('Channel should have a valid name');
+        }
         $this->name = $name;
         return $this;
     }

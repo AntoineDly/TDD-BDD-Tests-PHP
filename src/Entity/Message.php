@@ -7,9 +7,16 @@ use Exception;
 
 class Message
 {
-    private int $channel;
     private string $content;
     private User $user;
+    private DateTime $date;
+
+    public function __construct(string $content, User $user, DateTime $date)
+    {
+        $this->setUser($user);
+        $this->setContent($content);
+        $this->setDate($date);
+    }
 
     public function getUser(): User
     {
@@ -21,7 +28,6 @@ class Message
         $this->user = $user;
         return $this;
     }
-    private DateTime $date;
 
     public function getDate(): DateTime
     {
@@ -31,17 +37,6 @@ class Message
     public function setDate(DateTime $date): Message
     {
         $this->date = $date;
-        return $this;
-    }
-
-    public function getChannel(): int
-    {
-        return $this->channel;
-    }
-
-    public function setChannel(int $channel): self
-    {
-        $this->channel = $channel;
         return $this;
     }
 

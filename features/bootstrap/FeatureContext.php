@@ -25,17 +25,17 @@ class FeatureContext implements Context
      */
     public function __construct()
     {
-        $this->user = new User();
-        $this->channel = new Channel();
-        $this->otherChannel = new Channel();
+        $this->user = new User('test');
+        $this->channel = new Channel('channel');
+        $this->otherChannel = new Channel('other channel');
     }
 
     /**
-     * @Given the user is connected to the :channel
+     * @Given the user is connected to the channel
      */
-    public function theUserIsConnectedToTheChannel($channel)
+    public function theUserIsConnectedToTheChannel()
     {
-        $this->user->setChannel($this->channel->setName($channel));
+        $this->user->setChannel($this->channel);
     }
 
     /**
@@ -44,10 +44,7 @@ class FeatureContext implements Context
     public function heHasAddAMessageInTheLastHours($arg1)
     {
         try {
-            $this->channel->addMessage((new Message())
-                ->setContent("message before 24 hours")
-                ->setDate(new DateTime('-23 hours -59 minutes'))
-                ->setUser($this->user));
+            $this->channel->addMessage(new Message(content: 'message before 24 hours', user: $this->user, date: new DateTime('-23 hours -59 minutes')));
         } catch (Exception $exception) {
             $this->exception = $exception;
         }
@@ -59,10 +56,7 @@ class FeatureContext implements Context
     public function anotherUserHasAddedAMessageInTheLastHours($arg1)
     {
         try {
-            $this->channel->addMessage((new Message())
-                ->setContent("message before 24 hours")
-                ->setDate(new DateTime('-23 hours -59 minutes'))
-                ->setUser(new User()));
+            $this->channel->addMessage(new Message(content: 'message before 24 hours', user: new User('test'), date: new DateTime('-23 hours -59 minutes')));
         } catch (Exception $exception) {
             $this->exception = $exception;
         }
@@ -75,10 +69,7 @@ class FeatureContext implements Context
     public function iAddAMessageInTheChannel($message)
     {
         try {
-            $this->channel->addMessage((new Message())
-                ->setContent($message)
-                ->setDate(new DateTime())
-                ->setUser($this->user));
+            $this->channel->addMessage(new Message(content: $message, user: $this->user, date: new DateTime()));
         } catch (Exception $exception) {
             $this->exception = $exception;
         }
@@ -115,10 +106,7 @@ class FeatureContext implements Context
     public function iAddAMessageInTheNewChannel($arg1)
     {
         try {
-            $this->otherChannel->addMessage((new Message())
-                ->setContent($arg1)
-                ->setDate(new DateTime())
-                ->setUser($this->user));
+            $this->otherChannel->addMessage(new Message(content: $arg1, user: $this->user, date: new DateTime()));
         } catch (Exception $exception) {
             $this->exception = $exception;
         }
