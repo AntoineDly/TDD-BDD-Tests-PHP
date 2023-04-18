@@ -56,7 +56,7 @@ class FeatureContext implements Context
     public function anotherUserHasAddedAMessageInTheLastHours($arg1)
     {
         try {
-            $this->channel->addMessage(new Message(content: 'message before 24 hours', user: new User('test'), date: new DateTime('-23 hours -59 minutes')));
+            $this->channel->addMessage(new Message(content: 'message before 24 hours', user: new User('test2'), date: new DateTime('-23 hours -59 minutes')));
         } catch (Exception $exception) {
             $this->exception = $exception;
         }

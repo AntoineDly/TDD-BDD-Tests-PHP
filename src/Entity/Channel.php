@@ -23,8 +23,8 @@ class Channel
     public function addMessage(Message $message): self
     {
         foreach ($this->messages as $currentAddMessage) {
-            if ($message->getUser() === end($this->messages)->getUser() &&
-                $currentAddMessage->getUser() === $message->getUser() &&
+            if ($message->getUser()->getUserName() === end($this->messages)->getUser()->getUserName() &&
+                $currentAddMessage->getUser()->getUserName() === $message->getUser()->getUserName() &&
                 $message->getDate()->diff($currentAddMessage->getDate())->format('%d') == 0
             ) {
                 throw new Exception('you have already sent a message in the last 24 hours');

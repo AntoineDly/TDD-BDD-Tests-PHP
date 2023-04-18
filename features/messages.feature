@@ -40,7 +40,6 @@ Feature: Message
     Then 1 message should be registered in the channel
     And it should return the error "you have already sent a message in the last 24 hours"
 
-
   Scenario: Sending a message when it's hasn't been 24 hours to another channel
     Given the user is connected to the channel
     And he has added a message in the last 24 hours;

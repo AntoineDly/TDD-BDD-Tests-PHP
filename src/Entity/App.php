@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use App\Entity\Channel;
-use App\Entity\User;
 use Exception;
 
 class App
@@ -30,6 +28,12 @@ class App
             }
         }
         $this->channels[] = $channel;
+        return $this;
+    }
+
+    public function setChannel(int $id, Channel $channel): self
+    {
+        $this->channels[$id] = $channel;
         return $this;
     }
 

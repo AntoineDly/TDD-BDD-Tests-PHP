@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
+  },
+  "name": "TDD-BDD-Tests-PHP",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/AntoineDly/TDD-BDD-Tests-PHP.git",
+  "author": "AntoineDly <antoine.delaunay333@gmail.com>",
+  "license": "MIT"
+}

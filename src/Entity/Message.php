@@ -11,7 +11,7 @@ class Message
     private User $user;
     private DateTime $date;
 
-    public function __construct(string $content, User $user, DateTime $date)
+    public function __construct(string $content, User $user, DateTime $date = new DateTime())
     {
         $this->setUser($user);
         $this->setContent($content);
